@@ -1,0 +1,35 @@
+.chart-header {
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-start; 
+    background-color: #0e6590; 
+    padding: -20px; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    font-family: "Arial", sans-serif;
+  }
+  
+  .chart-header label {
+    margin-right: 10px;
+    font-weight: bold; 
+    color: #ffffff; 
+    margin-left: 10px;
+  }
+  
+  .chart-header select {
+    padding: 8px; 
+    font-size: 14px; 
+    border: 1px solid #ddd; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    background-color: #fff; 
+    transition: border-color 0.3s; 
+    margin-left: -10px;
+  }
+  
+  .chart-header select:focus {
+    outline: none;
+    border-color: #0e6590; 
+  }
+  

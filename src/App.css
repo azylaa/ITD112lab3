@@ -1,0 +1,56 @@
+/* App.css */
+
+.App {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  padding-top:40px;
+}
+
+.form-row {
+  display: block; 
+  margin: 20px auto; 
+  width: 90%; 
+  max-width: 1000px;
+  padding-bottom: 70px;
+  padding-top: 30px;
+}
+
+.form-wrapper, .csv-wrapper {
+  display: inline-block; 
+  vertical-align: top;
+  width: 48%; 
+  box-sizing: border-box; 
+  margin: 0 1%; 
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    width: 100%; 
+    text-align: center; 
+  }
+
+  .form-wrapper, .csv-wrapper {
+    width: 100%; 
+    margin: 10px 0; 
+  }
+}
+
+.toggle-button {
+  margin: 20px auto; 
+  padding: 10px 20px; 
+  background-color: #4CAF50; 
+  color: white; 
+  border: none; 
+  border-radius: 4px; 
+  cursor: pointer; 
+  font-size: 16px;
+  transition: background-color 0.3s; 
+}
+
+.toggle-button:hover {
+  background-color: #45a049; 
+}
+
+.toggle-button:active {
+  background-color: #3e8e41; 
+}

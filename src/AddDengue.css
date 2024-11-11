@@ -1,0 +1,46 @@
+/* AddDengueData.css */
+
+.form-container {
+    width: 100%; 
+    max-width: 500px; 
+    margin: 0 -75px; 
+    padding: 20px; 
+    background-color: #ffffff; 
+    border: 1px solid #ddd; 
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    font-family: "Arial", sans-serif; 
+}
+
+.form-group {
+    margin-bottom: 15px; 
+}
+
+.form-input {
+    width: 100%; 
+    padding: 10px; 
+    border: 1px solid #ddd;
+    border-radius: 4px; 
+    font-size: 14px; 
+    box-sizing: border-box;
+}
+
+.submit-button {
+    width: 100%; 
+    padding: 10px; 
+    background-color: #0e6590; 
+    color: white; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer;
+    font-size: 16px; 
+    transition: background-color 0.3s; 
+}
+
+.submit-button:hover {
+    background-color: #0d184c; 
+}
+
+.submit-button:active {
+    background-color: #0d184c; 
+}
