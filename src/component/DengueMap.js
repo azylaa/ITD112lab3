@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
+import { MapContainer, TileLayer, GeoJSON, useMap  } from 'react-leaflet';
+import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import phGeoData from '../ph.json';
 import "../DengueMap.css";
@@ -31,17 +32,11 @@ const DengueMap = ({ data = {} }) => {
 
   useEffect(() => {
     setMapKey((prevKey) => prevKey + 1); // Re-render map when metric or year changes
-  }, [metric, year]);
-
-  if (!data || Object.keys(data).length === 0) {
-    return <div>Loading data...</div>;
-  }
-
-  console.log("Data received in DengueMap:", data);
+  }, [metric, year])
 
   // Color scale for cases
   const getColorForCases = (density) => {
-    return density > 10 ? '#800026' :
+    return density > 7 ? '#800026' :
            density > 5  ? '#BD0026' :
            density > 2  ? '#E31A1C' :
            density > 1  ? '#FC4E2A' :
@@ -56,11 +51,47 @@ const DengueMap = ({ data = {} }) => {
     return density > .09 ? '#800026' :
            density > .07  ? '#BD0026' :
            density > .05  ? '#E31A1C' :
-           density > .03  ? '#FC4E2A' :
-           density > 0.025 ? '#FD8D3C' :
+           density > .04  ? '#FC4E2A' :
+           density > 0.03 ? '#FD8D3C' :
            density > 0.02 ? '#FEB24C' :
            density > 0.01 ? '#FED976' :
                           '#FFEDA0';
+  };
+
+ const Legend = () => {
+    const map = useMap();
+
+    useEffect(() => {
+      const legend = L.control({ position: 'bottomright' });
+
+      legend.onAdd = () => {
+        const div = L.DomUtil.create('div', 'info legend');
+        const grades = metric === 'cases'
+          ? [0, 0.1, 0.2, 0.5, 1, 2, 5, 7]
+          : [0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.07, 0.09];
+        const colors = metric === 'cases'
+          ? ['#FFEDA0', '#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A', '#E31A1C', '#BD0026', '#800026']
+          : ['#FFEDA0', '#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A', '#E31A1C', '#BD0026', '#800026'];
+
+          div.innerHTML = `<h4>${metric.charAt(0).toUpperCase() + metric.slice(1)}  Density<br><small>(per 1000 people)</small></h4> `;
+          for (let i = 0; i < grades.length; i++) {
+            div.innerHTML += `
+              <div>
+                <i style="background:${colors[i]}"></i> 
+                ${grades[i]}${grades[i + 1] ? `&ndash;${grades[i + 1]}` : '+'}
+              </div>`;
+          }          
+        return div;
+      };
+
+      legend.addTo(map);
+
+      return () => {
+        map.removeControl(legend);
+      };
+    }, [map, metric]);
+
+    return null;
   };
 
   const onEachRegion = (region, layer) => {
@@ -153,6 +184,7 @@ const DengueMap = ({ data = {} }) => {
           data={phGeoData} 
           onEachFeature={onEachRegion} 
         />
+        <Legend />
       </MapContainer>
     </div>
   );

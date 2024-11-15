@@ -7,13 +7,13 @@ import { getAnalytics } from "firebase/analytics";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBoIy-ddIOhkI1WTFRg-fVpGDS6TudAZWM",
-  authDomain: "cletolab3-e28bd.firebaseapp.com",
-  projectId: "cletolab3-e28bd",
-  storageBucket: "cletolab3-e28bd.firebasestorage.app",
-  messagingSenderId: "783828782442",
-  appId: "1:783828782442:web:164d380f4983f5ad8ee913",
-  measurementId: "G-G1JF109WKF"
+  apiKey: "AIzaSyAYyHzo4s2mjq0RQk9eQPIbfP_Y__x9tNE",
+  authDomain: "cletolab3-8efeb.firebaseapp.com",
+  projectId: "cletolab3-8efeb",
+  storageBucket: "cletolab3-8efeb.firebasestorage.app",
+  messagingSenderId: "1024206044583",
+  appId: "1:1024206044583:web:29ad5919dd820c2fef0a82",
+  measurementId: "G-8LSTEJ2664"
   };
 
 // Initialize Firebase
